@@ -59,6 +59,9 @@ function preload() {
   background_04 = loadImage('background_04.png');
 
   one = loadImage('one.png');
+  strokes = loadImage('strokes.png');
+
+  stroke_data = loadJSON("stroke_data.json");
 
 }
 
@@ -91,6 +94,9 @@ function setup() {
 
   // resize_canvas();
 
+  console.log(stroke_data);
+  stroke_coord = stroke_data.strokes.a
+
   noLoop();
 }
 
@@ -105,6 +111,11 @@ function draw() {
   image(one, 0, 0)
   pop();
 
+  push();
+  tint(color(PALETTE[2]))
+  let stroke = strokes.get(stroke_coord.x, stroke_coord.y, stroke_coord.w, stroke_coord.h);
+  image(stroke, 400, 500);
+  pop();
 
   // origins.looping_through_days();
   // origins.drop_all();
