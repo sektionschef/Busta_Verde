@@ -43,6 +43,8 @@ let SCALING_FACTOR = 1;
 let rescaling_width;
 let rescaling_height;
 
+let stroke_image;
+
 // https://coolors.co/2b193d-2c365e-484d6d-4b8f8c-c5979d
 PALETTE = ["#2b193d", "#2c365e", "#484d6d", "#4b8f8c", "#c5979d"]
 
@@ -94,8 +96,11 @@ function setup() {
 
   // resize_canvas();
 
-  console.log(stroke_data);
-  stroke_coord = stroke_data.strokes.a
+  // for (let i = 0; i < frames.length; i++) {
+  //   let pos = frames[i].position;
+  //   let img = spritesheet.get(pos.x, pos.y, pos.w, pos.h);
+  //   animation.push(img);
+  // }
 
   noLoop();
 }
@@ -111,11 +116,18 @@ function draw() {
   image(one, 0, 0)
   pop();
 
-  push();
-  tint(color(PALETTE[2]))
-  let stroke = strokes.get(stroke_coord.x, stroke_coord.y, stroke_coord.w, stroke_coord.h);
-  image(stroke, 400, 500);
-  pop();
+
+  for (let stroke in stroke_data.strokes) {
+    currentStroke = stroke_data.strokes[stroke];
+    push();
+    tint(color(random(PALETTE)))
+    stroke_img = strokes.get(currentStroke.x, currentStroke.y, currentStroke.w, currentStroke.h);
+    let x = random(0, width);
+    let y = random(0, height);
+    image(stroke_img, x, y);
+    pop();
+  }
+
 
   // origins.looping_through_days();
   // origins.drop_all();
@@ -126,4 +138,5 @@ function draw() {
 
   // Engine.update(engine);
 }
+
 
