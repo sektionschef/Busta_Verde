@@ -16,6 +16,7 @@ class Particle {
     sprite,
     offsetPhysical,
     label,
+    color
   ) {
 
     // active or not
@@ -28,10 +29,15 @@ class Particle {
     };
     this.dragged = false;
 
-    // add opacity
-    this.hue = color(random(["#bca796", "#20201e", "#a3a5a4", "#c1cad6", "#855839"]));
     this.radius = random(15, 20);
     this.label = label;
+
+    if (typeof color !== 'undefined') {
+      this.color = color;
+    } else {
+      this.color = "black";
+    }
+
 
     // position of attractive shape (left top) - dynamic
     this.effectiveTopLeftPostion = {
@@ -112,6 +118,10 @@ class Particle {
 
     push();
     if (this.physical_body.isStatic) {
+      // translate(this.physical_centre.x, this.physical_centre.y)
+      // rotate(0.5);
+      tint(this.color);
+
       image(
         this.sprite,
         this.attractivePosition.x,
@@ -149,7 +159,7 @@ class Particle {
       }
     } else {
       push();
-      fill(this.hue, 255, 255);
+      fill(this.color);
       noStroke()
       beginShape();
       for (var i = 0; i < this.physical_body.vertices.length; i++) {
@@ -297,7 +307,6 @@ class Particles {
   }
   // create all instances at once
   create_all() {
-    // DIESE STORKES AM ENDE IST NICHT SCHÖN
     // console.log(this.buildingPlans);
     for (let buildingPlan of this.buildingPlans) {
       this.bodies.push(new Particle(
@@ -307,6 +316,7 @@ class Particles {
         buildingPlan.image,
         buildingPlan.offsetPhysical,
         buildingPlan.label,
+        buildingPlan.color,
       ));
     }
   }

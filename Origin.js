@@ -29,7 +29,6 @@ class Origin {
 
         push();
         fill(0, 0, 255);
-        // textFont("Helvetica");
         textSize(default_debugging_text_size * SCALING_FACTOR);
         // textAlign(CENTER, CENTER);
         text(this.label, (this.position.x + 10), (this.position.y - 10));
@@ -40,22 +39,8 @@ class Origin {
 // controlling the origins and the frequency of particles.
 class Origins {
     constructor(buildingPlans = {}) {
-        this.min_particles = 50;
-        this.max_particles = 500;
-        this.frameRythm = 5;  // 20 - day change speed
-        this.frequency_max_start = 5;  // frequency of particle drop - random between 1 and this value
-        this.frequency_min_start = 1;
-
-        this.current_co2 = 400;
-        this.current_day_index = 0;
-        this.current_particles_limit = 0;
-        this.current_date_string = "";
-        this.frequency = 1;
-
         this.bodies = [];
         this.buildingPlans = buildingPlans;
-
-        this.NONO = 0.2;
 
     }
 
@@ -71,7 +56,7 @@ class Origins {
 
     drop_all() {
         for (let origin of this.bodies) {
-            let frequency = Math.floor((Math.random() * 100) + this.NONO);
+            let frequency = Math.floor(Math.random() * 100);
             origin.drop(frequency);
         }
     }
@@ -86,38 +71,4 @@ class Origins {
     kill_all() {
         this.bodies = [];
     }
-
-    // rythm of counting days up
-    looping_through_days() {
-        if (frameCount % this.frameRythm == 1) {
-            // console.log(this.co2_data["co2"].length);
-            // console.log(this.current_day_index);
-
-            // reset to beginning
-            if (this.current_day_index == (this.co2_data["co2"].length - 1))
-                this.current_day_index = 0;
-
-            this.current_day_index += 1;
-            this.current_date_string = this.co2_data.co2[this.current_day_index].year + "-" + this.co2_data.co2[this.current_day_index].month + "-" + this.co2_data.co2[this.current_day_index].day;
-            this.current_co2 = this.co2_data.co2[this.current_day_index].trend
-
-            this.current_particles_limit = map(this.current_co2, this.co2_min, this.co2_max, this.min_particles, this.max_particles, true);
-            this.frequency_max = map(this.current_co2, this.co2_max, this.co2_min, this.frequency_max_start, this.frequency_min_start, true);
-        }
-        particles_physical.kill_not_needed(this.current_particles_limit);
-    }
-
-
-    // show the current limit/goal of physical bodies in the world
-    show_number_physical_bodies() {
-
-        let string = "Particle Goal: " + this.current_particles_limit.toFixed(0);
-        push();
-        fill(255);
-        stroke(0);
-        text(string, 10, height - 50);
-        pop();
-        // console.log(this.frequency_max);
-    }
-
 }

@@ -2013,11 +2013,6 @@ const options_particles = {
 // ]
 
 
-const origins_data = [
-  { label: "origin_1", x: 100, y: 30, },
-  { label: "origin_1", x: 500, y: 15, },
-]
-
 
 const particle_data = [
   {

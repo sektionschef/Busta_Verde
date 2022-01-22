@@ -1,7 +1,7 @@
 // trace, debug, info, warn, error
 // const SWITCH_LOGGING_LEVEL = "warn";
-const SWITCH_LOGGING_LEVEL = "info";
-// const SWITCH_LOGGING_LEVEL = "debug";
+// const SWITCH_LOGGING_LEVEL = "info";
+const SWITCH_LOGGING_LEVEL = "debug";
 
 // create impediments and only show impediment layer and no other layers
 // const SWITCH_CREATE_IMPEDIMENTS = true;
@@ -15,7 +15,7 @@ let custom_font;
 let custom_font_bold;
 
 let fps = 0;
-let default_debugging_text_size = 25;
+let default_debugging_text_size = 15;
 let debugging_physical_body_count = 0;
 
 
@@ -53,6 +53,11 @@ const options_impediments = {
   inertia: Infinity,  // prevents rotation
 }
 
+const origins_data = [
+  { label: "1", x: 100, y: 30, },
+  { label: "2", x: 500, y: 60, },
+]
+
 
 function preload() {
   // direct API
@@ -65,8 +70,7 @@ function preload() {
   background_03 = loadImage('background_03.png');
   background_04 = loadImage('background_04.png');
 
-  one = loadImage('one.png');
-  strokes = loadImage('strokes.png');
+  strokes_full = loadImage('strokes_full.png');
 
   stroke_data = loadJSON("stroke_data.json");
   palettes = loadJSON("palettes.json");
@@ -80,7 +84,6 @@ function setup() {
 
   logging.setLevel(SWITCH_LOGGING_LEVEL);
 
-  // matter.js stuff
   engine = Engine.create();
   world = engine.world;
 
@@ -91,13 +94,13 @@ function setup() {
   const VERTICAL_GRAVITY = 1;
 
   PALETTE = palettes.palettes[0].values;
-  console.log(palettes.palettes[0].name);
+  PALETTE_NAME = palettes.palettes[0].name;
 
   background_image = random([background_01, background_02, background_03, background_04]);
 
   for (let currentStroke of stroke_data.data) {
     currentStroke.color = color(random(PALETTE));
-    currentStroke.image = strokes.get(currentStroke.x, currentStroke.y, currentStroke.w, currentStroke.h);
+    currentStroke.image = strokes_full.get(currentStroke.x, currentStroke.y, currentStroke.w, currentStroke.h);
     currentStroke.x = random(0, width);
     currentStroke.y = random(0, height);
 
@@ -112,7 +115,7 @@ function setup() {
     };
     currentStroke.options = options_impediments;
 
-    // create vertices from image
+    // create vertices from image - four coordinates with a few inches inwards
     var offsetVerticesW = currentStroke.w / 4
     var offsetVerticesH = currentStroke.h / 4
     currentStroke.vertices = [
@@ -125,6 +128,7 @@ function setup() {
 
   particles_physical = new Particles(particle_data);
   // impediments = new Particles(impediments_data);
+
   impediments = new Particles(stroke_data.data);
   impediments.create_all();
 
@@ -153,24 +157,27 @@ function draw() {
   image(background_image, 0, 0)
 
 
-
-
-  origins.debugging_show_origins();
+  origins.drop_all();
 
   // origins.looping_through_days();
-  origins.drop_all();
+  if (logging.getLevel() <= 1) {
+    origins.debugging_show_origins();
+  }
 
   particles_physical.show();
 
   impediments.show();
 
   // wahrscheinlich unnötig weil in particles schon gedrawed
-  for (let currentStroke of stroke_data.data) {
-    push();
-    tint(currentStroke.color)
-    image(currentStroke.image, currentStroke.x, currentStroke.y);
-    pop();
-  }
+  // for (let currentStroke of stroke_data.data) {
+  //   push();
+  //   tint(currentStroke.color)
+  //   image(currentStroke.image, currentStroke.x, currentStroke.y);
+  //   pop();
+  // }
+
+
+  particles_physical.kill_not_needed(30);
 
   Engine.update(engine);
 }
