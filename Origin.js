@@ -39,7 +39,7 @@ class Origin {
 
 // controlling the origins and the frequency of particles.
 class Origins {
-    constructor(buildingPlans = {}, co2_data) {
+    constructor(buildingPlans = {}) {
         this.min_particles = 50;
         this.max_particles = 500;
         this.frameRythm = 5;  // 20 - day change speed
@@ -54,15 +54,8 @@ class Origins {
 
         this.bodies = [];
         this.buildingPlans = buildingPlans;
-        this.co2_data = co2_data;
 
-        // calculate min & max of co2 data
-        this.data_trend = [];
-        for (let co2_per_day of this.co2_data["co2"]) {
-            this.data_trend.push(float(co2_per_day.trend));
-        }
-        this.co2_min = Math.min(...this.data_trend);
-        this.co2_max = Math.max(...this.data_trend);
+        this.NONO = 0.2;
 
     }
 
@@ -78,7 +71,7 @@ class Origins {
 
     drop_all() {
         for (let origin of this.bodies) {
-            let frequency = Math.floor((Math.random() * 100) + this.frequency_max);
+            let frequency = Math.floor((Math.random() * 100) + this.NONO);
             origin.drop(frequency);
         }
     }
@@ -114,22 +107,6 @@ class Origins {
         particles_physical.kill_not_needed(this.current_particles_limit);
     }
 
-    show_co2_label() {
-        let text_size = 25;
-        this.co2_string = this.current_co2 + ' ppm CO² in atmosphere'
-
-        push();
-        fill(50);
-        // stroke(200);
-        textSize(text_size * SCALING_FACTOR);
-        // textStyle(BOLD);
-        textFont(custom_font_bold);
-        text(this.current_date_string, 3430 * SCALING_FACTOR, 2100 * SCALING_FACTOR);
-        textFont(custom_font);
-        // textStyle(NORMAL);
-        text(this.co2_string, 3320 * SCALING_FACTOR, 2130 * SCALING_FACTOR);
-        pop();
-    }
 
     // show the current limit/goal of physical bodies in the world
     show_number_physical_bodies() {
