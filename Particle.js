@@ -19,6 +19,8 @@ class Particle {
     color
   ) {
 
+    this.angle = Math.PI / 9;
+
     // active or not
     this.aliveFlag = true;
 
@@ -29,7 +31,7 @@ class Particle {
     };
     this.dragged = false;
 
-    this.radius = random(15, 20);
+    this.radius = random(5, 10);
     this.label = label;
 
     if (typeof color !== 'undefined') {
@@ -37,7 +39,6 @@ class Particle {
     } else {
       this.color = "black";
     }
-
 
     // position of attractive shape (left top) - dynamic
     this.effectiveTopLeftPostion = {
@@ -86,6 +87,8 @@ class Particle {
     this.inertia = this.physical_body.inertia;
 
     World.add(world, this.physical_body)
+
+    Body.rotate(this.physical_body, this.angle)
   }
 
   show() {
@@ -118,14 +121,16 @@ class Particle {
 
     push();
     if (this.physical_body.isStatic) {
-      // translate(this.physical_centre.x, this.physical_centre.y)
-      // rotate(0.5);
+      translate(this.attractivePosition.x + this.sprite.width / 2, this.attractivePosition.y + this.sprite.height / 2)
+      rotate(this.physical_body.angle);
       tint(this.color);
 
       image(
         this.sprite,
-        this.attractivePosition.x,
-        this.attractivePosition.y,
+        // this.attractivePosition.x,
+        // this.attractivePosition.y,
+        - this.sprite.width * SCALING_FACTOR / 2,
+        - this.sprite.height * SCALING_FACTOR / 2,
         this.sprite.width * SCALING_FACTOR,
         this.sprite.height * SCALING_FACTOR,
       );
