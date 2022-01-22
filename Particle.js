@@ -297,6 +297,8 @@ class Particles {
   }
   // create all instances at once
   create_all() {
+    // DIESE STORKES AM ENDE IST NICHT SCHÖN
+    // console.log(this.buildingPlans);
     for (let buildingPlan of this.buildingPlans) {
       this.bodies.push(new Particle(
         buildingPlan.position,

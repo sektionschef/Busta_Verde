@@ -1,7 +1,7 @@
 // trace, debug, info, warn, error
 // const SWITCH_LOGGING_LEVEL = "warn";
-// const SWITCH_LOGGING_LEVEL = "info";
-const SWITCH_LOGGING_LEVEL = "debug";
+const SWITCH_LOGGING_LEVEL = "info";
+// const SWITCH_LOGGING_LEVEL = "debug";
 
 // create impediments and only show impediment layer and no other layers
 // const SWITCH_CREATE_IMPEDIMENTS = true;
@@ -45,6 +45,14 @@ let stroke_image;
 let PALETTE;
 let background_image;
 
+const options_impediments = {
+  isStatic: true,
+  friction: 1,
+  restitution: 0.5,
+  density: 1,
+  inertia: Infinity,  // prevents rotation
+}
+
 
 function preload() {
   // direct API
@@ -87,19 +95,38 @@ function setup() {
 
   background_image = random([background_01, background_02, background_03, background_04]);
 
-  for (let stroke in stroke_data.strokes) {
-    currentStroke = stroke_data.strokes[stroke];
+  for (let currentStroke of stroke_data.data) {
     currentStroke.color = color(random(PALETTE));
     currentStroke.image = strokes.get(currentStroke.x, currentStroke.y, currentStroke.w, currentStroke.h);
     currentStroke.x = random(0, width);
     currentStroke.y = random(0, height);
 
+    // plan for impediments, basis of CO2 thing
+    currentStroke.position = {
+      x: currentStroke.x,
+      y: currentStroke.y
+    }
+    currentStroke.offsetPhysical = {
+      x: -currentStroke.w / 2,
+      y: -currentStroke.h / 2,
+    };
+    currentStroke.options = options_impediments;
+
+    // create vertices from image
+    var offsetVerticesW = currentStroke.w / 4
+    var offsetVerticesH = currentStroke.h / 4
+    currentStroke.vertices = [
+      { x: currentStroke.x + offsetVerticesW, y: currentStroke.y + offsetVerticesH },
+      { x: currentStroke.x + currentStroke.w - offsetVerticesW, y: currentStroke.y + offsetVerticesH },
+      { x: currentStroke.x + currentStroke.w - offsetVerticesW, y: currentStroke.y + currentStroke.h - offsetVerticesH },
+      { x: currentStroke.x + offsetVerticesW, y: currentStroke.y + currentStroke.h - offsetVerticesH },
+    ]
   }
-  console.log(stroke_data.strokes);
 
   particles_physical = new Particles(particle_data);
   // impediments = new Particles(impediments_data);
-  // impediments.create_all();
+  impediments = new Particles(stroke_data.data);
+  impediments.create_all();
 
   origins = new Origins(origins_data);
   origins.create_all();
@@ -127,13 +154,6 @@ function draw() {
 
 
 
-  for (let stroke in stroke_data.strokes) {
-    currentStroke = stroke_data.strokes[stroke];
-    push();
-    tint(currentStroke.color)
-    image(currentStroke.image, currentStroke.x, currentStroke.y);
-    pop();
-  }
 
   origins.debugging_show_origins();
 
@@ -142,7 +162,15 @@ function draw() {
 
   particles_physical.show();
 
-  // impediments.show();
+  impediments.show();
+
+  // wahrscheinlich unnötig weil in particles schon gedrawed
+  for (let currentStroke of stroke_data.data) {
+    push();
+    tint(currentStroke.color)
+    image(currentStroke.image, currentStroke.x, currentStroke.y);
+    pop();
+  }
 
   Engine.update(engine);
 }
