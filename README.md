@@ -1,6 +1,9 @@
 # Tasks
 
-* json for particles.
+* json for particles
+* add splatters and noise
+* on top small stuff
+* behind bigger styles
 
 
 
@@ -11,3 +14,6 @@ params
 * palette
 * gravity
 * origin position
+
+Korrektur nach links
+

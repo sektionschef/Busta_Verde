@@ -19,7 +19,7 @@ class Particle {
     color
   ) {
 
-    this.angle = Math.PI / 9;
+    this.angle = random(-Math.PI / 9, Math.PI / 9);
 
     // active or not
     this.aliveFlag = true;
@@ -37,7 +37,8 @@ class Particle {
     if (typeof color !== 'undefined') {
       this.color = color;
     } else {
-      this.color = "black";
+      // this.color = "black";
+      this.color = random(PALETTE);
     }
 
     // position of attractive shape (left top) - dynamic
@@ -138,6 +139,7 @@ class Particle {
       // rotate around the physical centre but show the sprite on top left thus using the offset
       translate(this.physical_centre.x, this.physical_centre.y)
       rotate(this.physical_body.angle);
+      tint(this.color);
 
       image(
         this.sprite,
@@ -345,6 +347,7 @@ class Particles {
       chosen_building_plan.image,
       chosen_building_plan.offsetPhysical,
       chosen_building_plan.label,
+      chosen_building_plan.color,
     ));
 
     // rescale the newly created body

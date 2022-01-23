@@ -1,7 +1,7 @@
 // trace, debug, info, warn, error
 // const SWITCH_LOGGING_LEVEL = "warn";
-// const SWITCH_LOGGING_LEVEL = "info";
-const SWITCH_LOGGING_LEVEL = "debug";
+const SWITCH_LOGGING_LEVEL = "info";
+// const SWITCH_LOGGING_LEVEL = "debug";
 
 // create impediments and only show impediment layer and no other layers
 // const SWITCH_CREATE_IMPEDIMENTS = true;
@@ -44,6 +44,9 @@ let rescaling_height;
 let stroke_image;
 let PALETTE;
 let background_image;
+let background_color;
+
+let bubble;
 
 const options_impediments = {
   isStatic: true,
@@ -59,6 +62,29 @@ const origins_data = [
 ]
 
 
+let particle_data = [
+  {
+    label: "1",
+    position: {
+      x: 0,
+      y: 0,
+    },
+    offsetPhysical: {
+      x: (0 - 23),
+      y: (0 - 23),
+    },
+    options: options_particles,
+    vertices: [
+      { x: 12, y: 20 },
+      { x: 32, y: 17 },
+      { x: 32, y: 30 },
+      { x: 14, y: 32 },
+    ],
+  },
+]
+
+
+
 function preload() {
   // direct API
   //data = loadJSON("https://global-warming.org/api/co2-api");
@@ -71,6 +97,7 @@ function preload() {
   background_04 = loadImage('background_04.png');
 
   strokes_full = loadImage('strokes_full.png');
+  bubbles_full = loadImage('bubble_full.png');
 
   stroke_data = loadJSON("stroke_data.json");
   palettes = loadJSON("palettes.json");
@@ -79,7 +106,7 @@ function preload() {
 
 function setup() {
 
-  let canvas = createCanvas(CANVAS_WIDTH, CANVAS_HEIGHT).parent('canvasHolder');
+  let canvas = createCanvas(CANVAS_WIDTH, CANVAS_HEIGHT, WEBGL).parent('canvasHolder');
   // let canvas = createCanvas(windowWidth, windowHeight).parent('canvasHolder');
 
   logging.setLevel(SWITCH_LOGGING_LEVEL);
@@ -126,8 +153,10 @@ function setup() {
     ]
   }
 
+  bubble = bubbles_full.get(91, 39, 50, 50)
+
+  particle_data[0].image = bubble;
   particles_physical = new Particles(particle_data);
-  // impediments = new Particles(impediments_data);
 
   impediments = new Particles(stroke_data.data);
   impediments.create_all();
@@ -146,15 +175,26 @@ function setup() {
 
   // resize_canvas();
 
+
   background(120);
+
+  // BACKGROUND COLOR 
+  // background_color = color(random(PALETTE));
+  // background_color.setAlpha(255);
+  // console.log(background_color);
 
   // noLoop();
 }
 
 function draw() {
 
+  translate(-width / 2, -height / 2, 0);
+
+  push();
+  // tint(background_color);
   // secret background random chooser
   image(background_image, 0, 0)
+  pop();
 
 
   origins.drop_all();
@@ -176,6 +216,7 @@ function draw() {
   //   pop();
   // }
 
+  // image(bubble, 30, 30, 20, 20);
 
   particles_physical.kill_not_needed(30);
 

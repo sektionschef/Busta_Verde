@@ -2014,195 +2014,196 @@ const options_particles = {
 
 
 
-const particle_data = [
-  {
-    label: "particle_1",
-    image_path: "./brushstroke_1.png",
-    position: {
-      x: 0,
-      y: 0,
-    },
-    offsetPhysical: {
-      x: (0 - 23),
-      y: (0 - 23),
-    },
-    options: options_particles,
-    vertices: [
-      { x: 12, y: 20 },
-      { x: 32, y: 17 },
-      { x: 32, y: 30 },
-      { x: 14, y: 32 },
-    ]
-  },
-  {
-    label: "particle_2",
-    image_path: "./brushstroke_2.png",
-    position: {
-      x: 0,
-      y: 0,
-    },
-    offsetPhysical: {
-      x: (0 - 23),
-      y: (0 - 23),
-    },
-    options: options_particles,
-    vertices: [
-      { x: 10, y: 20 },
-      { x: 33, y: 17 },
-      { x: 34, y: 31 },
-      { x: 10, y: 30 },
-    ]
-  },
-  {
-    label: "particle_3",
-    image_path: "./brushstroke_3.png",
-    position: {
-      x: 0,
-      y: 0,
-    },
-    offsetPhysical: {
-      x: (0 - 25),
-      y: (0 - 23),
-    },
-    options: options_particles,
-    vertices: [
-      { x: 19, y: 19 },
-      { x: 32, y: 19 },
-      { x: 32, y: 30 },
-      { x: 19, y: 29 },
-    ]
-  },
-  {
-    label: "particle_4",
-    image_path: "./brushstroke_4.png",
-    position: {
-      x: 0,
-      y: 0,
-    },
-    offsetPhysical: {
-      x: (0 - 25),
-      y: (0 - 22),
-    },
-    options: options_particles,
-    vertices: [
-      { x: 17, y: 19 },
-      { x: 34, y: 17 },
-      { x: 32, y: 30 },
-      { x: 19, y: 30 },
-    ]
-  },
-  {
-    label: "particle_5",
-    image_path: "./brushstroke_5.png",
-    position: {
-      x: 0,
-      y: 0,
-    },
-    offsetPhysical: {
-      x: (0 - 24),
-      y: (0 - 22),
-    },
-    options: options_particles,
-    vertices: [
-      { x: 16, y: 18 },
-      { x: 33, y: 17 },
-      { x: 33, y: 30 },
-      { x: 14, y: 30 },
-    ]
-  },
-  {
-    label: "particle_6",
-    image_path: "./brushstroke_6.png",
-    position: {
-      x: 0,
-      y: 0,
-    },
-    offsetPhysical: {
-      x: (0 - 26),
-      y: (0 - 22),
-    },
-    options: options_particles,
-    vertices: [
-      { x: 11, y: 15 },
-      { x: 42, y: 14 },
-      { x: 42, y: 33 },
-      { x: 9, y: 30 },
-    ]
-  },
-  {
-    label: "particle_7",
-    image_path: "./brushstroke_7.png",
-    position: {
-      x: 0,
-      y: 0,
-    },
-    offsetPhysical: {
-      x: (0 - 26),
-      y: (0 - 22),
-    },
-    options: options_particles,
-    vertices: [
-      { x: 11, y: 15 },
-      { x: 42, y: 14 },
-      { x: 42, y: 33 },
-      { x: 9, y: 30 },
-    ]
-  },
-  {
-    label: "particle_8",
-    image_path: "./brushstroke_8.png",
-    position: {
-      x: 0,
-      y: 0,
-    },
-    offsetPhysical: {
-      x: (0 - 24),
-      y: (0 - 25),
-    },
-    options: options_particles,
-    vertices: [
-      { x: 5, y: 21 },
-      { x: 41, y: 12 },
-      { x: 41, y: 37 },
-      { x: 12, y: 36 },
-    ]
-  },
-  {
-    label: "particle_9",
-    image_path: "./brushstroke_9.png",
-    position: {
-      x: 0,
-      y: 0,
-    },
-    offsetPhysical: {
-      x: (0 - 25),
-      y: (0 - 24),
-    },
-    options: options_particles,
-    vertices: [
-      { x: 8, y: 14 },
-      { x: 42, y: 12 },
-      { x: 42, y: 37 },
-      { x: 10, y: 34 },
-    ]
-  },
-  {
-    label: "particle_10",
-    image_path: "./brushstroke_10.png",
-    position: {
-      x: 0,
-      y: 0,
-    },
-    offsetPhysical: {
-      x: (0 - 24),
-      y: (0 - 22),
-    },
-    options: options_particles,
-    vertices: [
-      { x: 6, y: 16 },
-      { x: 42, y: 12 },
-      { x: 40, y: 36 },
-      { x: 8, y: 34 },
-    ]
-  },
-]
+// const particle_data = [
+//   {
+//     label: "particle_1",
+//     image_path: "./brushstroke_1.png",
+//     position: {
+//       x: 0,
+//       y: 0,
+//     },
+//     offsetPhysical: {
+//       x: (0 - 23),
+//       y: (0 - 23),
+//     },
+//     options: options_particles,
+//     vertices: [
+//       { x: 12, y: 20 },
+//       { x: 32, y: 17 },
+//       { x: 32, y: 30 },
+//       { x: 14, y: 32 },
+//     ]
+//   },
+//   {
+//     label: "particle_2",
+//     image_path: "./brushstroke_2.png",
+//     position: {
+//       x: 0,
+//       y: 0,
+//     },
+//     offsetPhysical: {
+//       x: (0 - 23),
+//       y: (0 - 23),
+//     },
+//     options: options_particles,
+//     vertices: [
+//       { x: 10, y: 20 },
+//       { x: 33, y: 17 },
+//       { x: 34, y: 31 },
+//       { x: 10, y: 30 },
+//     ]
+//   },
+//   {
+//     label: "particle_3",
+//     image_path: "./brushstroke_3.png",
+//     position: {
+//       x: 0,
+//       y: 0,
+//     },
+//     offsetPhysical: {
+//       x: (0 - 25),
+//       y: (0 - 23),
+//     },
+//     options: options_particles,
+//     vertices: [
+//       { x: 19, y: 19 },
+//       { x: 32, y: 19 },
+//       { x: 32, y: 30 },
+//       { x: 19, y: 29 },
+//     ]
+//   },
+//   {
+//     label: "particle_4",
+//     image_path: "./brushstroke_4.png",
+//     position: {
+//       x: 0,
+//       y: 0,
+//     },
+//     offsetPhysical: {
+//       x: (0 - 25),
+//       y: (0 - 22),
+//     },
+//     options: options_particles,
+//     vertices: [
+//       { x: 17, y: 19 },
+//       { x: 34, y: 17 },
+//       { x: 32, y: 30 },
+//       { x: 19, y: 30 },
+//     ]
+//   },
+//   {
+//     label: "particle_5",
+//     image_path: "./brushstroke_5.png",
+//     position: {
+//       x: 0,
+//       y: 0,
+//     },
+//     offsetPhysical: {
+//       x: (0 - 24),
+//       y: (0 - 22),
+//     },
+//     options: options_particles,
+//     vertices: [
+//       { x: 16, y: 18 },
+//       { x: 33, y: 17 },
+//       { x: 33, y: 30 },
+//       { x: 14, y: 30 },
+//     ]
+//   },
+//   {
+//     label: "particle_6",
+//     image_path: "./brushstroke_6.png",
+//     position: {
+//       x: 0,
+//       y: 0,
+//     },
+//     offsetPhysical: {
+//       x: (0 - 26),
+//       y: (0 - 22),
+//     },
+//     options: options_particles,
+//     vertices: [
+//       { x: 11, y: 15 },
+//       { x: 42, y: 14 },
+//       { x: 42, y: 33 },
+//       { x: 9, y: 30 },
+//     ]
+//   },
+//   {
+//     label: "particle_7",
+//     image_path: "./brushstroke_7.png",
+//     position: {
+//       x: 0,
+//       y: 0,
+//     },
+//     offsetPhysical: {
+//       x: (0 - 26),
+//       y: (0 - 22),
+//     },
+//     options: options_particles,
+//     vertices: [
+//       { x: 11, y: 15 },
+//       { x: 42, y: 14 },
+//       { x: 42, y: 33 },
+//       { x: 9, y: 30 },
+//     ]
+//   },
+//   {
+//     label: "particle_8",
+//     image_path: "./brushstroke_8.png",
+//     position: {
+//       x: 0,
+//       y: 0,
+//     },
+//     offsetPhysical: {
+//       x: (0 - 24),
+//       y: (0 - 25),
+//     },
+//     options: options_particles,
+//     vertices: [
+//       { x: 5, y: 21 },
+//       { x: 41, y: 12 },
+//       { x: 41, y: 37 },
+//       { x: 12, y: 36 },
+//     ]
+//   },
+//   {
+//     label: "particle_9",
+//     image_path: "./brushstroke_9.png",
+//     position: {
+//       x: 0,
+//       y: 0,
+//     },
+//     offsetPhysical: {
+//       x: (0 - 25),
+//       y: (0 - 24),
+//     },
+//     options: options_particles,
+//     vertices: [
+//       { x: 8, y: 14 },
+//       { x: 42, y: 12 },
+//       { x: 42, y: 37 },
+//       { x: 10, y: 34 },
+//     ]
+//   },
+//   {
+//     label: "particle_10",
+//     image_path: "./brushstroke_10.png",
+//     position: {
+//       x: 0,
+//       y: 0,
+//     },
+//     offsetPhysical: {
+//       x: (0 - 24),
+//       y: (0 - 22),
+//     },
+//     options: options_particles,
+//     vertices: [
+//       { x: 6, y: 16 },
+//       { x: 42, y: 12 },
+//       { x: 40, y: 36 },
+//       { x: 8, y: 34 },
+//     ]
+//   },
+// ]
+

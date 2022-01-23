@@ -50,6 +50,7 @@ class Origins {
                 buildingPlan["x"],
                 buildingPlan["y"],
                 buildingPlan["label"]
+
             ));
         }
     }
