@@ -3,8 +3,9 @@
 * json for particles
 * add splatters and noise
 * on top small stuff
-* behind bigger styles
 * canvas on top
+* unterschiedliche größen der particles
+* vereinfachung der data jsons ohne "position"
 
 
 

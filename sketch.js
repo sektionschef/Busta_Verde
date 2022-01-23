@@ -70,28 +70,6 @@ const options_bubbles = {
   // inertia: Infinity,  // prevents rotation
 }
 
-// let particle_data = [
-//   {
-//     label: "1",
-//     position: {
-//       x: 0,
-//       y: 0,
-//     },
-//     offsetPhysical: {
-//       x: (0 - 23),
-//       y: (0 - 23),
-//     },
-//     options: options_particles,
-//     vertices: [
-//       { x: 12, y: 20 },
-//       { x: 32, y: 17 },
-//       { x: 32, y: 30 },
-//       { x: 14, y: 32 },
-//     ],
-//   },
-// ]
-
-
 
 function preload() {
   // direct API
@@ -110,6 +88,16 @@ function preload() {
   stroke_data = loadJSON("stroke_data.json");
   bubble_data = loadJSON("bubble_data.json");
   palettes = loadJSON("palettes.json");
+
+  area_01 = loadImage('area_01.png');
+  area_02 = loadImage('area_02.png');
+  area_03 = loadImage('area_03.png');
+
+  spatter_01 = loadImage('spatter_01.png');
+  spatter_02 = loadImage('spatter_02.png');
+  spatter_03 = loadImage('spatter_03.png');
+
+  canvas_image = loadImage('canvas.png');
 
 }
 
@@ -199,6 +187,10 @@ function setup() {
   // background_color.setAlpha(255);
   // console.log(background_color);
 
+  area_01_color = color(random(PALETTE));
+  area_02_color = color(random(PALETTE));
+  area_03_color = color(random(PALETTE));
+
   // noLoop();
 }
 
@@ -209,6 +201,21 @@ function draw() {
   push();
   // tint(background_color);
   image(background_image, 0, 0)
+  pop();
+
+  push();
+  tint(area_01_color);
+  image(area_01, 0, 0)
+  pop();
+
+  push();
+  tint(area_02_color);
+  image(area_02, 0, 0)
+  pop();
+
+  push();
+  tint(area_03_color);
+  image(area_03, 0, 0)
   pop();
 
 
@@ -236,6 +243,15 @@ function draw() {
   particles_physical.kill_not_needed(30);
 
   Engine.update(engine);
+
+  push();
+  // blendMode(MULTIPLY);
+  tint(color(122));
+  image(spatter_01, 0, 0);
+  pop();
+
+  image(canvas_image, 0, 0);
+
 }
 
 

@@ -57,7 +57,7 @@ class Particle {
       // convert physical and attractive positions
       this.offsetPhysical = offsetPhysical;
 
-      this.physical_body = Bodies.circle(position.x, position.y, this.radius, options)
+      this.physical_body = Bodies.circle(position.x, position.y, (this.sprite.width / 3), options)
       // if body with sprite or a static body without sprite (if impediment is painted on canvas)
     } else if ((typeof sprite !== "undefined") || (typeof options !== "undefined" && options.isStatic == true)) {
       this.sprite = sprite;
