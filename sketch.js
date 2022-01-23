@@ -62,26 +62,34 @@ const origins_data = [
 ]
 
 
-let particle_data = [
-  {
-    label: "1",
-    position: {
-      x: 0,
-      y: 0,
-    },
-    offsetPhysical: {
-      x: (0 - 23),
-      y: (0 - 23),
-    },
-    options: options_particles,
-    vertices: [
-      { x: 12, y: 20 },
-      { x: 32, y: 17 },
-      { x: 32, y: 30 },
-      { x: 14, y: 32 },
-    ],
-  },
-]
+const options_bubbles = {
+  isStatic: false,
+  friction: 1,
+  restitution: 0.5,  // A Number that defines the restitution (elasticity) of the body.
+  density: 1,
+  // inertia: Infinity,  // prevents rotation
+}
+
+// let particle_data = [
+//   {
+//     label: "1",
+//     position: {
+//       x: 0,
+//       y: 0,
+//     },
+//     offsetPhysical: {
+//       x: (0 - 23),
+//       y: (0 - 23),
+//     },
+//     options: options_particles,
+//     vertices: [
+//       { x: 12, y: 20 },
+//       { x: 32, y: 17 },
+//       { x: 32, y: 30 },
+//       { x: 14, y: 32 },
+//     ],
+//   },
+// ]
 
 
 
@@ -100,6 +108,7 @@ function preload() {
   bubbles_full = loadImage('bubble_full.png');
 
   stroke_data = loadJSON("stroke_data.json");
+  bubble_data = loadJSON("bubble_data.json");
   palettes = loadJSON("palettes.json");
 
 }
@@ -154,10 +163,16 @@ function setup() {
     ]
   }
 
-  bubble = bubbles_full.get(86, 51, 38, 37)
+  // bubble = bubbles_full.get(86, 51, 38, 37)
+  for (let currentBubble of bubble_data.data) {
+    currentBubble.color = color(random(PALETTE));
+    currentBubble.image = bubbles_full.get(currentBubble.x, currentBubble.y, currentBubble.w, currentBubble.h);
+    currentBubble.options = options_bubbles;
+  }
 
-  particle_data[0].image = bubble;
-  particles_physical = new Particles(particle_data);
+  // particle_data[0].image = bubble;
+  // console.log(bubble_data.data);
+  particles_physical = new Particles(bubble_data.data);
 
   impediments = new Particles(stroke_data.data);
   impediments.create_all();

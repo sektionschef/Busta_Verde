@@ -16,7 +16,8 @@ class Particle {
     sprite,
     offsetPhysical,
     label,
-    color
+    color,
+    shape,
   ) {
 
     this.angle = random(-Math.PI / 9, Math.PI / 9);
@@ -47,8 +48,18 @@ class Particle {
       y: 0
     }
 
-    // if body with sprite or a static body without sprite (if impediment is painted on canvas)
-    if ((typeof sprite !== "undefined") || (typeof options !== "undefined" && options.isStatic == true)) {
+
+    if (shape == "circle") {
+      this.sprite = sprite;
+      // position of attractive_shape (left top) - static
+      this.attractivePosition = position;
+
+      // convert physical and attractive positions
+      this.offsetPhysical = offsetPhysical;
+
+      this.physical_body = Bodies.circle(position.x, position.y, this.radius, options)
+      // if body with sprite or a static body without sprite (if impediment is painted on canvas)
+    } else if ((typeof sprite !== "undefined") || (typeof options !== "undefined" && options.isStatic == true)) {
       this.sprite = sprite;
 
       // position of attractive_shape (left top) - static
@@ -71,15 +82,14 @@ class Particle {
         x: (- this.offsetPhysical.x),
         y: (- this.offsetPhysical.y)
       });
-
     } else {
-      // print(this.radius);
       // https://brm.io/matter-js/docs/classes/Bodies.html
       this.physical_body = random([
         Bodies.circle(position.x, position.y, this.radius, options),
         Bodies.rectangle(position.x, position.y, this.radius, this.radius, options),
         Bodies.polygon(position.x, position.y, 5, this.radius, options)
       ]);
+
     }
 
     this.physical_body.label = this.label;
@@ -324,6 +334,7 @@ class Particles {
         buildingPlan.offsetPhysical,
         buildingPlan.label,
         buildingPlan.color,
+        buildingPlan.shape,
       ));
     }
   }
@@ -348,6 +359,7 @@ class Particles {
       chosen_building_plan.offsetPhysical,
       chosen_building_plan.label,
       chosen_building_plan.color,
+      chosen_building_plan.shape,
     ));
 
     // rescale the newly created body
