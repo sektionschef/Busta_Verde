@@ -120,8 +120,9 @@ function setup() {
   // const VERTICAL_GRAVITY = Math.random();
   const VERTICAL_GRAVITY = 1;
 
-  PALETTE = palettes.palettes[0].values;
-  PALETTE_NAME = palettes.palettes[0].name;
+  chosen_palette = random(palettes.palettes);
+  PALETTE = chosen_palette.values;
+  PALETTE_NAME = chosen_palette.name;
 
   background_image = random([background_01, background_02, background_03, background_04]);
 
@@ -153,7 +154,7 @@ function setup() {
     ]
   }
 
-  bubble = bubbles_full.get(91, 39, 50, 50)
+  bubble = bubbles_full.get(86, 51, 38, 37)
 
   particle_data[0].image = bubble;
   particles_physical = new Particles(particle_data);
@@ -192,7 +193,6 @@ function draw() {
 
   push();
   // tint(background_color);
-  // secret background random chooser
   image(background_image, 0, 0)
   pop();
 

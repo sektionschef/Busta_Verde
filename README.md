@@ -4,6 +4,7 @@
 * add splatters and noise
 * on top small stuff
 * behind bigger styles
+* canvas on top
 
 
 
