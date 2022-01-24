@@ -1,28 +1,3 @@
-function keyPressed() {
-  if (key === 'P') {
-    console.log("Result:")
-    console.log(editor.vertices_text);
-    editor.vertices_text = "";
-    editor.markers = [];
-  }
-}
-
-function mousePressed() {
-  impediments.clicked(mouseX, mouseY);
-
-  if (keyIsPressed) {
-    if (keyCode == SHIFT) {
-      console.log(" New vertex with " + mouseX + " : " + mouseY);
-      editor.vertices_text += ("{x: " + mouseX + ", y: " + mouseY + "},\n");
-      editor.markers.push({ x: mouseX, y: mouseY });
-    }
-  }
-}
-
-function mouseReleased() {
-  impediments.undrag();
-}
-
 // each time window.innerWidth changes
 function windowResized() {
   logging.debug("Window is resized -> resizing canvas.");

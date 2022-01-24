@@ -72,11 +72,6 @@ const options_bubbles = {
 
 
 function preload() {
-  // direct API
-  //data = loadJSON("https://global-warming.org/api/co2-api");
-  // for static
-  // co2_data = loadJSON("co2_data_static_export.json");
-
   background_01 = loadImage('background_01.png');
   background_02 = loadImage('background_02.png');
   background_03 = loadImage('background_03.png');
@@ -92,13 +87,6 @@ function preload() {
   area_01 = loadImage('area_01.png');
   area_02 = loadImage('area_02.png');
   area_03 = loadImage('area_03.png');
-
-  spatter_01 = loadImage('spatter_01.png');
-  spatter_02 = loadImage('spatter_02.png');
-  spatter_03 = loadImage('spatter_03.png');
-
-  canvas_image = loadImage('canvas.png');
-
 }
 
 function setup() {
@@ -111,11 +99,9 @@ function setup() {
   engine = Engine.create();
   world = engine.world;
 
-  // editor = new Editor();
-
   // const VERTICAL_GRAVITY = -0.25;
   // const VERTICAL_GRAVITY = Math.random();
-  const VERTICAL_GRAVITY = 1;
+  const VERTICAL_GRAVITY = getRandomArbitrary(0.5, 1);
 
   chosen_palette = random(palettes.palettes);
   PALETTE = chosen_palette.values;
@@ -243,14 +229,6 @@ function draw() {
   particles_physical.kill_not_needed(30);
 
   Engine.update(engine);
-
-  push();
-  // blendMode(MULTIPLY);
-  tint(color(122));
-  image(spatter_01, 0, 0);
-  pop();
-
-  image(canvas_image, 0, 0);
 
 }
 

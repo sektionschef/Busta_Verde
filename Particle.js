@@ -220,47 +220,6 @@ class Particle {
     this.aliveFlag = false;  // set for array (p5.js)
   }
 
-  // if attractive shape is selected by mouse
-  clicked(pointerX, pointerY) {
-    if (typeof this.sprite !== "undefined") {
-      if (
-        pointerX >= this.effectiveTopLeftPostion.x && pointerX <= (this.effectiveTopLeftPostion.x + this.sprite.width) &&
-        pointerY >= this.effectiveTopLeftPostion.y && pointerY <= (this.effectiveTopLeftPostion.y + this.sprite.height)
-      ) {
-        // logging.debug("##########################");
-        // logging.debug("pointerX: " + pointerX);
-        // logging.debug("this.effectiveTopLeftPostion.x: " + this.effectiveTopLeftPostion.x);
-        // logging.debug("this.sprite.width: " + this.sprite.width);
-        // logging.debug("pointerY: " + pointerY);
-        // logging.debug("this.effectiveTopLeftPostion.y: " + this.effectiveTopLeftPostion.y);
-        // logging.debug("this.sprite.height: " + this.sprite.height);
-        // logging.debug("##########################");
-        // set initial offset on the first click - position where object is grabbed
-        this.offsetMouse.x = this.effectiveTopLeftPostion.x - pointerX;
-        this.offsetMouse.y = this.effectiveTopLeftPostion.y - pointerY;
-        this.dragged = true;
-        Matter.Body.setInertia(this.physical_body, Infinity);  // prevent rotation while dragging
-      }
-    }
-  }
-  drag(pointerX, pointerY) {
-    if (this.dragged) {
-      this.effectiveTopLeftPostion.x = pointerX + this.offsetMouse.x;
-      this.effectiveTopLeftPostion.y = pointerY + this.offsetMouse.y;
-    }
-  }
-  undrag() {
-    // if (this.dragged) {
-    //   logging.debug("Offset between effective attractive shape (top left) and physical body (centre of mass).")
-    //   let xi = this.effectiveTopLeftPostion.x - this.physical_centre.x;
-    //   let yi = this.effectiveTopLeftPostion.y - this.physical_centre.y;
-    //   logging.debug("Offset - x:" + xi + " y: " + yi);
-    //   logging.debug("Position effective attractive shape x: " + this.effectiveTopLeftPostion.x + " y: " + this.effectiveTopLeftPostion.y);
-    // }
-    this.dragged = false;
-    Matter.Body.setInertia(this.physical_body, this.inertia);  // restore inertia
-  }
-
   draw_attractive_shape_debugging() {
     // attractive shape - topf left
     push();
@@ -402,21 +361,6 @@ class Particles {
       }
       // NECESSARY FOR ATTRACITVE SHAPES???
       // this.bodies.splice(0, first_bodies_indexes);  // remove instantly
-    }
-  }
-  clicked(pointerX, pointerY) {
-    for (let particle of this.bodies) {
-      particle.clicked(pointerX, pointerY);
-    }
-  }
-  drag(pointerX, pointerY) {
-    for (let particle of this.bodies) {
-      particle.drag(pointerX, pointerY);
-    }
-  }
-  undrag() {
-    for (let particle of this.bodies) {
-      particle.undrag();
     }
   }
   show() {
