@@ -72,6 +72,8 @@ const options_bubbles = {
 
 
 function preload() {
+  fontRegular = loadFont('SourceSansPro-Regular.otf');
+
   background_01 = loadImage('background_01.png');
   background_02 = loadImage('background_02.png');
   background_03 = loadImage('background_03.png');
@@ -230,6 +232,8 @@ function draw() {
 
   Engine.update(engine);
 
+  // show_framerate();
+  // show_number_physical_bodies();
 }
 
 

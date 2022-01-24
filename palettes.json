@@ -21,6 +21,50 @@
                 "#9ca3db"
             ],
             "url": "https://coolors.co/191308-322a26-454b66-677db7-9ca3db"
+        },
+        {
+            "name": "boredom in the morning",
+            "values": [
+                "#2e382e",
+                "#50c9ce",
+                "#72a1e5",
+                "#9883e5",
+                "#fcd3de"
+            ],
+            "url": "https://coolors.co/2e382e-50c9ce-72a1e5-9883e5-fcd3de"
+        },
+        {
+            "name": "mango marillo",
+            "values": [
+                "#321325",
+                "#5f0f40",
+                "#9a031e",
+                "#cb793a",
+                "#fcdc4d"
+            ],
+            "url": "https://coolors.co/321325-5f0f40-9a031e-cb793a-fcdc4d"
+        },
+        {
+            "name": "mummy at the beach",
+            "values": [
+                "#52414c",
+                "#596157",
+                "#5b8c5a",
+                "#cfd186",
+                "#e3655b"
+            ],
+            "url": "https://coolors.co/52414c-596157-5b8c5a-cfd186-e3655b"
+        },
+        {
+            "name": "jungle unplugged",
+            "values": [
+                "#9cafb7",
+                "#adb993",
+                "#d0d38f",
+                "#f6ca83",
+                "#949d6a"
+            ],
+            "url": "https://coolors.co/9cafb7-adb993-d0d38f-f6ca83-949d6a"
         }
     ]
 }

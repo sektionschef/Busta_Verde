@@ -5,9 +5,9 @@ function show_framerate() {
         fps = frameRate();
     }
     push();
-    fill(255);
-    stroke(0);
-    text("FPS: " + fps.toFixed(2), 10, height - 10);
+    fill(0);
+    textFont(fontRegular);
+    text("FPS: " + fps.toFixed(2), 10, height - 170);
     pop();
 }
 
@@ -19,9 +19,9 @@ function show_number_physical_bodies() {
     }
     let string = "Particle Count: " + debugging_physical_body_count;
     push();
-    fill(255);
-    stroke(0);
-    text(string, 10, height - 30);
+    fill(0);
+    textFont(fontRegular);
+    text(string, 10, height - 150);
     pop();
 }
 
