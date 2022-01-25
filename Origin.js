@@ -12,7 +12,7 @@ class Origin {
 
     drop(frequency) {
         if (frameCount % frequency == 1) {
-            particles_physical.add_single_sprite(this.position);
+            bubbles_physical.add_single_sprite(this.position);
         }
     }
 

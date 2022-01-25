@@ -97,35 +97,21 @@ function setup() {
   impediment_strokes = new Strokes(stroke_data.data)
   impediment_strokes.create_all();
 
-  particles_physical = new Bubbles(bubble_data.data);
+  bubbles_physical = new Bubbles(bubble_data.data);
 
   origins = new Origins(origins_data);
   origins.create_all();
 
-  // let canvas_mouse = Mouse.create(canvas.elt);
-  // canvas_mouse.pixelRatio = pixelDensity();
-  // mConstraint = MouseConstraint.create(engine, { mouse: canvas_mouse })
-  // World.add(world, mConstraint);
-
-  // matter.js stuff
   Matter.Runner.run(engine)
   engine.world.gravity.y = VERTICAL_GRAVITY;
 
-  // resize_canvas();
-
-
   background(120);
-
-  // BACKGROUND COLOR 
-  // background_color = color(random(PALETTE));
-  // background_color.setAlpha(255);
-  // console.log(background_color);
 
   area_01_color = color(random(PALETTE));
   area_02_color = color(random(PALETTE));
   area_03_color = color(random(PALETTE));
 
-  // noLoop();
+  // resize_canvas();
 }
 
 function draw() {
@@ -133,7 +119,6 @@ function draw() {
   translate(-width / 2, -height / 2, 0);
 
   push();
-  // tint(background_color);
   image(background_image, 0, 0)
   pop();
 
@@ -155,26 +140,14 @@ function draw() {
 
   origins.drop_all();
 
-  // origins.looping_through_days();
   if (logging.getLevel() <= 1) {
     origins.debugging_show_origins();
   }
 
-  particles_physical.show();
-
+  bubbles_physical.show();
   impediment_strokes.show();
 
-  // wahrscheinlich unnötig weil in particles schon gedrawed
-  // for (let currentStroke of stroke_data.data) {
-  //   push();
-  //   tint(currentStroke.color)
-  //   image(currentStroke.image, currentStroke.x, currentStroke.y);
-  //   pop();
-  // }
-
-  // image(bubble, 30, 30, 20, 20);
-
-  particles_physical.kill_not_needed(30);
+  bubbles_physical.kill_not_needed(30);
 
   Engine.update(engine);
 
