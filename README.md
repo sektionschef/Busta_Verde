@@ -2,7 +2,8 @@
 
 * zusätzliche particles strokes
 * zusätzliche areas
-* vereinfachung der data jsons ohne "position"
+* farbenmanagement
+* cluster areas
 * rescale
 * shift to the left, shift upwards
 * replace random

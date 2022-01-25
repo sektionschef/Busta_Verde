@@ -111,7 +111,7 @@ function setup() {
   area_02_color = color(random(PALETTE));
   area_03_color = color(random(PALETTE));
 
-  // resize_canvas();
+  resize_canvas();
 }
 
 function draw() {
