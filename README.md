@@ -1,8 +1,11 @@
 # Tasks
 
-* json for particles
-* unterschiedliche größen der particles
+* zusätzliche particles strokes
+* zusätzliche areas
 * vereinfachung der data jsons ohne "position"
+* rescale
+* shift to the left, shift upwards
+* replace random
 
 
 

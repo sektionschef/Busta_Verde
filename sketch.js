@@ -48,27 +48,10 @@ let background_color;
 
 let bubble;
 
-const options_impediments = {
-  isStatic: true,
-  friction: 1,
-  restitution: 0.5,
-  density: 1,
-  inertia: Infinity,  // prevents rotation
-}
-
 const origins_data = [
   { label: "1", x: 100, y: 30, },
   { label: "2", x: 500, y: 60, },
 ]
-
-
-const options_bubbles = {
-  isStatic: false,
-  friction: 1,
-  restitution: 0.5,  // A Number that defines the restitution (elasticity) of the body.
-  density: 1,
-  // inertia: Infinity,  // prevents rotation
-}
 
 
 function preload() {
@@ -111,47 +94,10 @@ function setup() {
 
   background_image = random([background_01, background_02, background_03, background_04]);
 
-  for (let currentStroke of stroke_data.data) {
-    currentStroke.color = color(random(PALETTE));
-    currentStroke.image = strokes_full.get(currentStroke.x, currentStroke.y, currentStroke.w, currentStroke.h);
-    currentStroke.x = random(0, width);
-    currentStroke.y = random(0, height);
+  impediment_strokes = new Strokes(stroke_data.data)
+  impediment_strokes.create_all();
 
-    // plan for impediments, basis of CO2 thing
-    currentStroke.position = {
-      x: currentStroke.x,
-      y: currentStroke.y
-    }
-    currentStroke.offsetPhysical = {
-      x: -currentStroke.w / 2,
-      y: -currentStroke.h / 2,
-    };
-    currentStroke.options = options_impediments;
-
-    // create vertices from image - four coordinates with a few inches inwards
-    var offsetVerticesW = currentStroke.w / 4
-    var offsetVerticesH = currentStroke.h / 4
-    currentStroke.vertices = [
-      { x: currentStroke.x + offsetVerticesW, y: currentStroke.y + offsetVerticesH },
-      { x: currentStroke.x + currentStroke.w - offsetVerticesW, y: currentStroke.y + offsetVerticesH },
-      { x: currentStroke.x + currentStroke.w - offsetVerticesW, y: currentStroke.y + currentStroke.h - offsetVerticesH },
-      { x: currentStroke.x + offsetVerticesW, y: currentStroke.y + currentStroke.h - offsetVerticesH },
-    ]
-  }
-
-  // bubble = bubbles_full.get(86, 51, 38, 37)
-  for (let currentBubble of bubble_data.data) {
-    currentBubble.color = color(random(PALETTE));
-    currentBubble.image = bubbles_full.get(currentBubble.x, currentBubble.y, currentBubble.w, currentBubble.h);
-    currentBubble.options = options_bubbles;
-  }
-
-  // particle_data[0].image = bubble;
-  // console.log(bubble_data.data);
-  particles_physical = new Particles(bubble_data.data);
-
-  impediments = new Particles(stroke_data.data);
-  impediments.create_all();
+  particles_physical = new Bubbles(bubble_data.data);
 
   origins = new Origins(origins_data);
   origins.create_all();
@@ -216,7 +162,7 @@ function draw() {
 
   particles_physical.show();
 
-  impediments.show();
+  impediment_strokes.show();
 
   // wahrscheinlich unnötig weil in particles schon gedrawed
   // for (let currentStroke of stroke_data.data) {
