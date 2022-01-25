@@ -29,6 +29,7 @@ class Origin {
 
         push();
         fill(0, 0, 255);
+        textFont(fontRegular);
         textSize(default_debugging_text_size * SCALING_FACTOR);
         // textAlign(CENTER, CENTER);
         text(this.label, (this.position.x + 10), (this.position.y - 10));

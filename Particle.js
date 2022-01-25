@@ -25,20 +25,11 @@ class Particle {
     // active or not
     this.aliveFlag = true;
 
-    // offset between mouse pointer and position of particle
-    this.offsetMouse = {
-      x: 0,
-      y: 0
-    };
-    this.dragged = false;
-
-    this.radius = random(5, 10);
     this.label = label;
 
     if (typeof color !== 'undefined') {
       this.color = color;
     } else {
-      // this.color = "black";
       this.color = random(PALETTE);
     }
 
@@ -48,16 +39,15 @@ class Particle {
       y: 0
     }
 
-
+    // if sprite is a circle
     if (shape == "circle") {
       this.sprite = sprite;
       // position of attractive_shape (left top) - static
       this.attractivePosition = position;
-
       // convert physical and attractive positions
       this.offsetPhysical = offsetPhysical;
-
       this.physical_body = Bodies.circle(position.x, position.y, (this.sprite.width / 3), options)
+
       // if body with sprite or a static body without sprite (if impediment is painted on canvas)
     } else if ((typeof sprite !== "undefined") || (typeof options !== "undefined" && options.isStatic == true)) {
       this.sprite = sprite;
@@ -83,7 +73,7 @@ class Particle {
         y: (- this.offsetPhysical.y)
       });
     } else {
-      // https://brm.io/matter-js/docs/classes/Bodies.html
+      this.radius = random(5, 10);
       this.physical_body = random([
         Bodies.circle(position.x, position.y, this.radius, options),
         Bodies.rectangle(position.x, position.y, this.radius, this.radius, options),
@@ -98,7 +88,6 @@ class Particle {
     this.inertia = this.physical_body.inertia;
 
     World.add(world, this.physical_body)
-
     Body.rotate(this.physical_body, this.angle)
   }
 
@@ -114,20 +103,9 @@ class Particle {
   show_sprite() {
     this.physical_centre = Matter.Vertices.centre(this.physical_body.vertices);  // recalculate
 
-    // if dragged the lead comes from attractive shape, if not from physical body
-    if (this.dragged) {
-      Body.translate(
-        this.physical_body, {
-        // not absolute position but change
-        x: (this.effectiveTopLeftPostion.x - this.physical_centre.x - this.offsetPhysical.x * SCALING_FACTOR),
-        y: (this.effectiveTopLeftPostion.y - this.physical_centre.y - this.offsetPhysical.y * SCALING_FACTOR)
-      }
-      );
-    } else {
-      this.effectiveTopLeftPostion = {
-        x: (this.physical_centre.x + this.offsetPhysical.x * SCALING_FACTOR),
-        y: (this.physical_centre.y + this.offsetPhysical.y * SCALING_FACTOR)
-      }
+    this.effectiveTopLeftPostion = {
+      x: (this.physical_centre.x + this.offsetPhysical.x * SCALING_FACTOR),
+      y: (this.physical_centre.y + this.offsetPhysical.y * SCALING_FACTOR)
     }
 
     push();
@@ -162,9 +140,7 @@ class Particle {
     pop();
 
     if (logging.getLevel() <= 1) {
-
       this.draw_attractive_shape_debugging();
-
       this.draw_physical_body_debugging();
     }
   }
@@ -189,7 +165,6 @@ class Particle {
     }
   }
 
-  // SCALING FACTORs als global oder parameter??
   rescale_physical_body() {
 
     let centre_x_before = this.physical_centre.x;
@@ -217,7 +192,7 @@ class Particle {
 
   remove_physical_body() {
     World.remove(world, this.physical_body);
-    this.aliveFlag = false;  // set for array (p5.js)
+    this.aliveFlag = false;
   }
 
   draw_attractive_shape_debugging() {
@@ -267,6 +242,7 @@ class Particle {
 
     push();
     fill(255, 0, 0);
+    textFont(fontRegular);
     textSize(default_debugging_text_size * SCALING_FACTOR);
     // textAlign(CENTER, CENTER);
     text(this.physical_body.label, (this.physical_centre.x + 10), (this.physical_centre.y - 10));
