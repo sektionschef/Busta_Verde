@@ -18,9 +18,14 @@ class Particle {
     label,
     color,
     shape,
+    angle,
   ) {
 
-    this.angle = random(-Math.PI / 9, Math.PI / 9);
+    if (typeof angle !== "undefined") {
+      this.angle = angle;
+    } else {
+      this.angle = 1;
+    }
 
     // active or not
     this.aliveFlag = true;
@@ -110,7 +115,7 @@ class Particle {
 
     push();
     if (this.physical_body.isStatic) {
-      translate(this.attractivePosition.x + this.sprite.width / 2, this.attractivePosition.y + this.sprite.height / 2)
+      translate((this.attractivePosition.x + this.sprite.width / 2) * SCALING_FACTOR, (this.attractivePosition.y + this.sprite.height / 2) * SCALING_FACTOR)
       rotate(this.physical_body.angle);
       tint(this.color);
 
@@ -270,6 +275,7 @@ class Particles {
         buildingPlan.label,
         buildingPlan.color,
         buildingPlan.shape,
+        buildingPlan.angle,
       ));
     }
   }

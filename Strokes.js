@@ -15,6 +15,7 @@ class Strokes extends Particles {
             currentStroke.image = strokes_full.get(currentStroke.x, currentStroke.y, currentStroke.w, currentStroke.h);
             currentStroke.x = random(0, width);
             currentStroke.y = random(0, height);
+            currentStroke.angle = random(-Math.PI / 9, Math.PI / 9);
 
             // plan for impediments, basis of CO2 thing
             currentStroke.position = {

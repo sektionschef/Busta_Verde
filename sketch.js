@@ -1,7 +1,7 @@
 // trace, debug, info, warn, error
 // const SWITCH_LOGGING_LEVEL = "warn";
-const SWITCH_LOGGING_LEVEL = "info";
-// const SWITCH_LOGGING_LEVEL = "debug";
+// const SWITCH_LOGGING_LEVEL = "info";
+const SWITCH_LOGGING_LEVEL = "debug";
 
 // create impediments and only show impediment layer and no other layers
 // const SWITCH_CREATE_IMPEDIMENTS = true;
@@ -119,22 +119,22 @@ function draw() {
   translate(-width / 2, -height / 2, 0);
 
   push();
-  image(background_image, 0, 0)
+  image(background_image, 0, 0, background_image.width * SCALING_FACTOR, background_image.height * SCALING_FACTOR)
   pop();
 
   push();
   tint(area_01_color);
-  image(area_01, 0, 0)
+  image(area_01, 0, 0, area_01.width * SCALING_FACTOR, area_01.height * SCALING_FACTOR)
   pop();
 
   push();
   tint(area_02_color);
-  image(area_02, 0, 0)
+  image(area_02, 0, 0, area_02.width * SCALING_FACTOR, area_02.height * SCALING_FACTOR)
   pop();
 
   push();
   tint(area_03_color);
-  image(area_03, 0, 0)
+  image(area_03, 0, 0, area_03.width * SCALING_FACTOR, area_03.height * SCALING_FACTOR)
   pop();
 
 
