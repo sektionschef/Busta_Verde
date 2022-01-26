@@ -81,14 +81,13 @@ function setup() {
   world = engine.world;
 
   // const VERTICAL_GRAVITY = -0.25;
-  // const VERTICAL_GRAVITY = Math.random();
   const VERTICAL_GRAVITY = getRandomFromInterval(0.5, 1);
 
-  chosen_palette = random(palettes.palettes);
+  chosen_palette = getRandomFromList(palettes.palettes);
   PALETTE = chosen_palette.values;
   PALETTE_NAME = chosen_palette.name;
 
-  background_image = random([background_01, background_02, background_03, background_04]);
+  background_image = getRandomFromList([background_01, background_02, background_03, background_04]);
 
   impediment_strokes = new Strokes(stroke_data.data)
   impediment_strokes.create_all();
@@ -103,9 +102,9 @@ function setup() {
 
   background(120);
 
-  area_01_color = color(random(PALETTE));
-  area_02_color = color(random(PALETTE));
-  area_03_color = color(random(PALETTE));
+  area_01_color = color(getRandomFromList(PALETTE));
+  area_02_color = color(getRandomFromList(PALETTE));
+  area_03_color = color(getRandomFromList(PALETTE));
 
   resize_canvas();
 }

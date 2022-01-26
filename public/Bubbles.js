@@ -9,7 +9,7 @@ class Bubbles extends Particles {
         }
 
         for (let currentBubble of data) {
-            currentBubble.color = color(random(PALETTE));
+            currentBubble.color = color(getRandomFromList(PALETTE));
             currentBubble.image = bubbles_full.get(currentBubble.x, currentBubble.y, currentBubble.w, currentBubble.h);
             currentBubble.options = options;
         }

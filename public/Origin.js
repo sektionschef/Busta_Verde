@@ -58,7 +58,7 @@ class Origins {
 
     drop_all() {
         for (let origin of this.bodies) {
-            let frequency = Math.floor(Math.random() * 100);
+            let frequency = Math.floor(fxrand() * 100);
             origin.drop(frequency);
         }
     }

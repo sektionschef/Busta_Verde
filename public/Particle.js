@@ -35,7 +35,7 @@ class Particle {
     if (typeof color !== 'undefined') {
       this.color = color;
     } else {
-      this.color = random(PALETTE);
+      this.color = getRandomFromList(PALETTE);
     }
 
     // position of attractive shape (left top) - dynamic
@@ -78,8 +78,8 @@ class Particle {
         y: (- this.offsetPhysical.y)
       });
     } else {
-      this.radius = random(5, 10);
-      this.physical_body = random([
+      this.radius = getRandomFromInterval(5, 10);
+      this.physical_body = getRandomFromList([
         Bodies.circle(position.x, position.y, this.radius, options),
         Bodies.rectangle(position.x, position.y, this.radius, this.radius, options),
         Bodies.polygon(position.x, position.y, 5, this.radius, options)
@@ -282,7 +282,7 @@ class Particles {
   // old one 
   add_single_sprite(position) {  // all same particles
 
-    let random_particle_index = Math.floor(random(0, this.buildingPlans.length));
+    let random_particle_index = Math.floor(getRandomFromInterval(0, this.buildingPlans.length));
     let chosen_building_plan = this.buildingPlans[random_particle_index];
 
     // correct for difference between top left and centre

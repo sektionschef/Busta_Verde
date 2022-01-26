@@ -27,9 +27,9 @@ function show_number_physical_bodies() {
 
 
 function getRandomFromInterval(min, max) {
-    return Math.random() * (max - min) + min;
+    return fxrand() * (max - min) + min;
 }
 
 function getRandomFromList(items) {
-    return items[Math.floor(Math.random() * items.length)];
+    return items[Math.floor(fxrand() * items.length)];
 }

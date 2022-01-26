@@ -11,11 +11,11 @@ class Strokes extends Particles {
         }
 
         for (let currentStroke of data) {
-            currentStroke.color = color(random(PALETTE));
+            currentStroke.color = color(getRandomFromList(PALETTE));
             currentStroke.image = strokes_full.get(currentStroke.x, currentStroke.y, currentStroke.w, currentStroke.h);
-            currentStroke.x = random(0, width);
-            currentStroke.y = random(0, height);
-            currentStroke.angle = random(-Math.PI / 9, Math.PI / 9);
+            currentStroke.x = getRandomFromInterval(0, width);
+            currentStroke.y = getRandomFromInterval(0, height);
+            currentStroke.angle = getRandomFromInterval(-Math.PI / 9, Math.PI / 9);
 
             // plan for impediments, basis of CO2 thing
             currentStroke.position = {
