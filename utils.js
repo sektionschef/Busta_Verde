@@ -26,6 +26,10 @@ function show_number_physical_bodies() {
 }
 
 
-function getRandomArbitrary(min, max) {
+function getRandomFromInterval(min, max) {
     return Math.random() * (max - min) + min;
+}
+
+function getRandomFromList(items) {
+    return items[Math.floor(Math.random() * items.length)];
 }

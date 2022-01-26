@@ -4,9 +4,9 @@
 * zusätzliche areas
 * farbenmanagement
 * cluster areas
-* rescale
 * shift to the left, shift upwards
 * replace random
+* add boilerplate
 
 
 

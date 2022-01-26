@@ -1,11 +1,7 @@
 // trace, debug, info, warn, error
 // const SWITCH_LOGGING_LEVEL = "warn";
-// const SWITCH_LOGGING_LEVEL = "info";
-const SWITCH_LOGGING_LEVEL = "debug";
-
-// create impediments and only show impediment layer and no other layers
-// const SWITCH_CREATE_IMPEDIMENTS = true;
-const SWITCH_CREATE_IMPEDIMENTS = false;
+const SWITCH_LOGGING_LEVEL = "info";
+// const SWITCH_LOGGING_LEVEL = "debug";
 
 // mind aspect ratio of image - default resolution
 const CANVAS_WIDTH = 1080;
@@ -86,7 +82,7 @@ function setup() {
 
   // const VERTICAL_GRAVITY = -0.25;
   // const VERTICAL_GRAVITY = Math.random();
-  const VERTICAL_GRAVITY = getRandomArbitrary(0.5, 1);
+  const VERTICAL_GRAVITY = getRandomFromInterval(0.5, 1);
 
   chosen_palette = random(palettes.palettes);
   PALETTE = chosen_palette.values;
