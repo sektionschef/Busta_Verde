@@ -44,8 +44,9 @@ let background_color;
 let bubble;
 
 const origins_data = [
-  { label: "1", x: 100, y: 30, },
-  { label: "2", x: 500, y: 60, },
+  { label: "1", x: getRandomFromInterval(0, CANVAS_WIDTH), y: -60, },
+  { label: "2", x: getRandomFromInterval(0, CANVAS_WIDTH), y: -60, },
+  { label: "3", x: getRandomFromInterval(0, CANVAS_WIDTH), y: -60, },
 ]
 
 
@@ -87,6 +88,7 @@ function setup() {
   chosen_palette = getRandomFromList(palettes.palettes);
   PALETTE = chosen_palette.values;
   PALETTE_NAME = chosen_palette.name;
+  console.log(PALETTE_NAME);
 
   background_image = getRandomFromList([background_01, background_02, background_03, background_04]);
 
@@ -115,7 +117,6 @@ function setup() {
 function draw() {
 
   translate(-width / 2, -height / 2, 0);
-
 
   push();
   image(background_image, 0, 0, background_image.width * SCALING_FACTOR, background_image.height * SCALING_FACTOR)
@@ -148,15 +149,6 @@ function draw() {
   impediment_strokes.show();
 
   bubbles_physical.kill_not_needed(30);
-
-  push();
-  let xy = color(255, 100, 100)
-  xy = distortColor(xy);
-  // xy.levels[0] = xy.levels[0] - 240
-  console.log(xy);
-  fill(xy);
-  circle(50, 50, 50);
-  pop();
 
   Engine.update(engine);
 

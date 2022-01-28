@@ -4,6 +4,7 @@ class Areas {
 
         for (let currentArea of this.data) {
             currentArea.color = color(getRandomFromList(PALETTE));
+            currentArea.color = distortColor(currentArea.color);
             currentArea.image = area_04.get(currentArea.x, currentArea.y, currentArea.w, currentArea.h);
             currentArea.x = getRandomFromInterval(0, width);
             currentArea.y = getRandomFromInterval(0, height);

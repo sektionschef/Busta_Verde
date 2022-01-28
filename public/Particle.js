@@ -325,7 +325,8 @@ class Particles {
       if (
         (this.bodies[i].physical_body.position.x < 0) ||
         (this.bodies[i].physical_body.position.x > width) ||
-        (this.bodies[i].physical_body.position.y < 0) ||
+        // (this.bodies[i].physical_body.position.y < 0) ||
+        (this.bodies[i].physical_body.position.y < -100) ||
         (this.bodies[i].physical_body.position.y > height)
       ) {
         // console.log("outside!")

@@ -1,7 +1,9 @@
 class Origin {
     constructor(position_x, position_y, label) {
-        this.position_x = Math.abs(position_x);
-        this.position_y = Math.abs(position_y);
+        // this.position_x = Math.abs(position_x);
+        // this.position_y = Math.abs(position_y);
+        this.position_x = position_x;
+        this.position_y = position_y;
         this.label = label;
 
         this.position_x = this.position_x * SCALING_FACTOR;
