@@ -12,6 +12,7 @@ class Strokes extends Particles {
 
         for (let currentStroke of data) {
             currentStroke.color = color(getRandomFromList(PALETTE));
+            // currentStroke.color = distortColor(currentStroke.color);
             currentStroke.image = strokes_full.get(currentStroke.x, currentStroke.y, currentStroke.w, currentStroke.h);
             currentStroke.x = getRandomFromInterval(0, width);
             currentStroke.y = getRandomFromInterval(0, height);

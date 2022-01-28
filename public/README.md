@@ -5,9 +5,6 @@
 * farbenmanagement
 * cluster areas
 * shift to the left, shift upwards
-* replace random
-* add boilerplate
-
 
 
 params

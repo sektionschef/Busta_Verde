@@ -15,11 +15,8 @@
 // [https://fxhash.xyz/articles/guide-mint-generative-token#features]
 //
 // window.$fxhashFeatures = {
-//   "Background": "Black",
-//   "Number of lines": 10,
-//   "Inverted": true
+//     "Palette": PALETTE_NAME,
 // }
-
 // this code writes the values to the DOM as an example
 // const container = document.createElement("div")
 // container.innerText = `

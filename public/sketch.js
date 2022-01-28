@@ -21,7 +21,6 @@ var World = Matter.World;
 var Body = Matter.Body;
 var Bodies = Matter.Bodies;
 var Composite = Matter.Composite;
-// var Render = Matter.Render,
 var Constraint = Matter.Constraint;
 var Mouse = Matter.Mouse;
 var MouseConstraint = Matter.MouseConstraint;
@@ -63,11 +62,13 @@ function preload() {
 
   stroke_data = loadJSON("stroke_data.json");
   bubble_data = loadJSON("bubble_data.json");
+  areas_data = loadJSON("areas_data.json");
   palettes = loadJSON("palettes.json");
 
   area_01 = loadImage('area_01.png');
   area_02 = loadImage('area_02.png');
   area_03 = loadImage('area_03.png');
+  area_04 = loadImage('area_04.png');
 }
 
 function setup() {
@@ -106,12 +107,15 @@ function setup() {
   area_02_color = color(getRandomFromList(PALETTE));
   area_03_color = color(getRandomFromList(PALETTE));
 
+  areas = new Areas(areas_data.data);
+
   resize_canvas();
 }
 
 function draw() {
 
   translate(-width / 2, -height / 2, 0);
+
 
   push();
   image(background_image, 0, 0, background_image.width * SCALING_FACTOR, background_image.height * SCALING_FACTOR)
@@ -132,6 +136,7 @@ function draw() {
   image(area_03, 0, 0, area_03.width * SCALING_FACTOR, area_03.height * SCALING_FACTOR)
   pop();
 
+  areas.show();
 
   origins.drop_all();
 
@@ -143,6 +148,15 @@ function draw() {
   impediment_strokes.show();
 
   bubbles_physical.kill_not_needed(30);
+
+  push();
+  let xy = color(255, 100, 100)
+  xy = distortColor(xy);
+  // xy.levels[0] = xy.levels[0] - 240
+  console.log(xy);
+  fill(xy);
+  circle(50, 50, 50);
+  pop();
 
   Engine.update(engine);
 

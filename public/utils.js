@@ -33,3 +33,11 @@ function getRandomFromInterval(min, max) {
 function getRandomFromList(items) {
     return items[Math.floor(fxrand() * items.length)];
 }
+
+function distortColor(colorObject) {
+    let max_diff = 10;
+    let red = (colorObject.levels[0] + getRandomFromInterval(-max_diff, max_diff));
+    let green = (colorObject.levels[1] + getRandomFromInterval(-max_diff, max_diff));
+    let blue = (colorObject.levels[2] + getRandomFromInterval(-max_diff, max_diff));
+    return color(red, green, blue);
+}
