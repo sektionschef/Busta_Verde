@@ -3,26 +3,30 @@ class Areas {
         this.data = data;
 
         for (let currentArea of this.data) {
-            currentArea.color = color(getRandomFromList(PALETTE));
-            currentArea.color = distortColor(currentArea.color);
-            currentArea.image = area_04.get(currentArea.x, currentArea.y, currentArea.w, currentArea.h);
-            currentArea.x = getRandomFromInterval(0, width);
-            currentArea.y = getRandomFromInterval(0, height);
-            currentArea.angle = getRandomFromInterval(-Math.PI / 3, Math.PI / 3);
+            for (let currentSprite of currentArea.sprites) {
+                currentSprite.color = color(getRandomFromList(PALETTE));
+                currentSprite.color = distortColor(currentSprite.color);
+                currentSprite.sprite = currentArea.image.get(currentSprite.x, currentSprite.y, currentSprite.w, currentSprite.h);
+                currentSprite.x = getRandomFromInterval(0, width);
+                currentSprite.y = getRandomFromInterval(0, height);
+                currentSprite.angle = getRandomFromInterval(-Math.PI / 3, Math.PI / 3);
+            }
         }
     }
     show() {
         for (let currentArea of this.data) {
-            push();
-            tint(currentArea.color);
-            image(
-                currentArea.image,
-                currentArea.x,
-                currentArea.y,
-                currentArea.image.width * SCALING_FACTOR,
-                currentArea.image.height * SCALING_FACTOR
-            )
-            pop();
+            for (let currentSprite of currentArea.sprites) {
+                push();
+                tint(currentSprite.color);
+                image(
+                    currentSprite.sprite,
+                    currentSprite.x,
+                    currentSprite.y,
+                    currentSprite.sprite.width * SCALING_FACTOR,
+                    currentSprite.sprite.height * SCALING_FACTOR
+                )
+                pop();
+            }
         }
     }
 }

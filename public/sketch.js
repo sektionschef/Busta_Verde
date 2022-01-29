@@ -43,10 +43,14 @@ let background_color;
 
 let bubble;
 
+let area04;
+let area05;
+
 const origins_data = [
   { label: "1", x: getRandomFromInterval(0, CANVAS_WIDTH), y: -60, },
   { label: "2", x: getRandomFromInterval(0, CANVAS_WIDTH), y: -60, },
   { label: "3", x: getRandomFromInterval(0, CANVAS_WIDTH), y: -60, },
+  { label: "4", x: getRandomFromInterval(0, CANVAS_WIDTH), y: -60, },
 ]
 
 
@@ -63,16 +67,26 @@ function preload() {
 
   stroke_data = loadJSON("stroke_data.json");
   bubble_data = loadJSON("bubble_data.json");
-  areas_data = loadJSON("areas_data.json");
+  areas_data = loadJSON("areas_data.json", loadAreas);
   palettes = loadJSON("palettes.json");
+
 
   area_01 = loadImage('area_01.png');
   area_02 = loadImage('area_02.png');
   area_03 = loadImage('area_03.png');
-  area_04 = loadImage('area_04.png');
+  // area_04 = loadImage('area_04.png');
+  // area_05 = loadImage('area_05.png');
 }
 
 function setup() {
+
+  // for (let currentArea of areas_data.data) {
+  //   if (currentArea.file == "area_04.png") {
+  //     currentArea.image = area_04;
+  //   } else if (currentArea.file == "area_05.png") {
+  //     currentArea.image = area_05;
+  //   }
+  // }
 
   let canvas = createCanvas(CANVAS_WIDTH, CANVAS_HEIGHT, WEBGL).parent('canvasHolder');
   // let canvas = createCanvas(windowWidth, windowHeight).parent('canvasHolder');
@@ -122,28 +136,28 @@ function draw() {
   image(background_image, 0, 0, background_image.width * SCALING_FACTOR, background_image.height * SCALING_FACTOR)
   pop();
 
-  push();
-  tint(area_01_color);
-  image(area_01, 0, 0, area_01.width * SCALING_FACTOR, area_01.height * SCALING_FACTOR)
-  pop();
+  // push();
+  // tint(area_01_color);
+  // image(area_01, 0, 0, area_01.width * SCALING_FACTOR, area_01.height * SCALING_FACTOR)
+  // pop();
 
-  push();
-  tint(area_02_color);
-  image(area_02, 0, 0, area_02.width * SCALING_FACTOR, area_02.height * SCALING_FACTOR)
-  pop();
+  // push();
+  // tint(area_02_color);
+  // image(area_02, 0, 0, area_02.width * SCALING_FACTOR, area_02.height * SCALING_FACTOR)
+  // pop();
 
-  push();
-  tint(area_03_color);
-  image(area_03, 0, 0, area_03.width * SCALING_FACTOR, area_03.height * SCALING_FACTOR)
-  pop();
+  // push();
+  // tint(area_03_color);
+  // image(area_03, 0, 0, area_03.width * SCALING_FACTOR, area_03.height * SCALING_FACTOR)
+  // pop();
 
-  areas.show();
 
   origins.drop_all();
 
   if (logging.getLevel() <= 1) {
     origins.debugging_show_origins();
   }
+  areas.show();
 
   bubbles_physical.show();
   impediment_strokes.show();

@@ -41,3 +41,10 @@ function distortColor(colorObject) {
     let blue = (colorObject.levels[2] + getRandomFromInterval(-max_diff, max_diff));
     return color(red, green, blue);
 }
+
+// as soon as the json is loaded, load the images via callback
+function loadAreas() {
+    for (let currentArea of areas_data.data) {
+        currentArea.image = loadImage(currentArea.file);
+    }
+}
