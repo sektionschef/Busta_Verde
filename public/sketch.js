@@ -132,7 +132,7 @@ function draw() {
   bubbles_physical.show();
   impediment_strokes.show();
 
-  bubbles_physical.kill_not_needed(30);
+  bubbles_physical.kill_not_needed(300);
 
   Engine.update(engine);
 

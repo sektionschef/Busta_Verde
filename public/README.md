@@ -1,9 +1,6 @@
 # Tasks
 
-* zusätzliche particles strokes
 * colordistortion limited with 255
-* großer fleck weg
-* kugerl fester
 
 
 

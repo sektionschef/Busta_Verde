@@ -21,8 +21,8 @@ class Areas {
                 tint(currentSprite.color);
                 image(
                     currentSprite.sprite,
-                    currentSprite.x,
-                    currentSprite.y,
+                    currentSprite.x * SCALING_FACTOR,
+                    currentSprite.y * SCALING_FACTOR,
                     currentSprite.sprite.width * SCALING_FACTOR,
                     currentSprite.sprite.height * SCALING_FACTOR
                 )
