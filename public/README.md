@@ -1,8 +1,5 @@
 # Tasks
 
-* colordistortion limited with 255
-
-
 
 params
 * density - wie viele strokes

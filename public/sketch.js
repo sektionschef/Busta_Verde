@@ -61,6 +61,7 @@ function preload() {
   background_02 = loadImage('background_02.png');
   background_03 = loadImage('background_03.png');
   background_04 = loadImage('background_04.png');
+  canvas_image = loadImage('canvas_02.png');
 
   strokes_full = loadImage('strokes_full.png');
   bubbles_full = loadImage('bubble_full.png');
@@ -121,7 +122,6 @@ function draw() {
   image(background_image, 0, 0, background_image.width * SCALING_FACTOR, background_image.height * SCALING_FACTOR)
   pop();
 
-
   origins.drop_all();
 
   if (logging.getLevel() <= 1) {
@@ -135,6 +135,10 @@ function draw() {
   bubbles_physical.kill_not_needed(300);
 
   Engine.update(engine);
+
+  push();
+  image(canvas_image, 0, 0, background_image.width * SCALING_FACTOR, background_image.height * SCALING_FACTOR)
+  pop();
 
   // show_framerate();
   // show_number_physical_bodies();
