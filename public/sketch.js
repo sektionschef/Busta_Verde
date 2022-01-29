@@ -97,7 +97,7 @@ function setup() {
   world = engine.world;
 
   // const VERTICAL_GRAVITY = -0.25;
-  const VERTICAL_GRAVITY = getRandomFromInterval(0.5, 1);
+  const VERTICAL_GRAVITY = getRandomFromInterval(0.05, 0.5);
 
   chosen_palette = getRandomFromList(palettes.palettes);
   PALETTE = chosen_palette.values;

@@ -23,37 +23,37 @@
             "url": "https://coolors.co/191308-322a26-454b66-677db7-9ca3db"
         },
         {
-            "name": "boredom in the morning",
+            "name": "squirrel on a barrel",
             "values": [
-                "#2e382e",
-                "#50c9ce",
-                "#72a1e5",
-                "#9883e5",
-                "#fcd3de"
+                "#1e1e24",
+                "#fb9f89",
+                "#c4af9a",
+                "#81ae9d",
+                "#21a179"
             ],
-            "url": "https://coolors.co/2e382e-50c9ce-72a1e5-9883e5-fcd3de"
+            "url": ""
         },
         {
-            "name": "mango marillo",
+            "name": "ancestors on the rocks",
             "values": [
-                "#321325",
-                "#5f0f40",
-                "#9a031e",
-                "#cb793a",
-                "#fcdc4d"
+                "#eabfcb",
+                "#c191a1",
+                "#a4508b",
+                "#5f0a87",
+                "#2f004f"
             ],
-            "url": "https://coolors.co/321325-5f0f40-9a031e-cb793a-fcdc4d"
+            "url": ""
         },
         {
-            "name": "mummy at the beach",
+            "name": "pull the bear",
             "values": [
-                "#52414c",
-                "#596157",
-                "#5b8c5a",
-                "#cfd186",
-                "#e3655b"
+                "#666a86",
+                "#788aa3",
+                "#92b6b1",
+                "#b2c9ab",
+                "#e8ddb5"
             ],
-            "url": "https://coolors.co/52414c-596157-5b8c5a-cfd186-e3655b"
+            "url": ""
         },
         {
             "name": "jungle unplugged",
@@ -65,6 +65,36 @@
                 "#949d6a"
             ],
             "url": "https://coolors.co/9cafb7-adb993-d0d38f-f6ca83-949d6a"
+        },
+        {
+            "name": "harry helps",
+            "values": [
+                "#fcd0a1",
+                "#b1b695",
+                "#53917e",
+                "#63535b",
+                "#6d1a36"
+            ]
+        },
+        {
+            "name": "princess berta",
+            "values": [
+                "#fcfcfc",
+                "#f7567c",
+                "#fffae3",
+                "#99e1d9",
+                "#5d576b"
+            ]
+        },
+        {
+            "name": "sandy turtle",
+            "values": [
+                "#d8e2dc",
+                "#ffffff",
+                "#ffcad4",
+                "#f4acb7",
+                "#9d8189"
+            ]
         }
     ]
 }

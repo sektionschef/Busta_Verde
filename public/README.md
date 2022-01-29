@@ -1,10 +1,10 @@
 # Tasks
 
 * zusätzliche particles strokes
-* zusätzliche areas
-* farbenmanagement
-* cluster areas
-* shift to the left, shift upwards
+* colordistortion limited with 255
+* großer fleck weg
+* kugerl fester
+
 
 
 params
@@ -14,6 +14,8 @@ params
 * palette
 * gravity
 * origin position
+
+
 
 Korrektur nach links
 

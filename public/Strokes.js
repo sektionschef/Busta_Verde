@@ -2,6 +2,8 @@
 class Strokes extends Particles {
     constructor(data) {
 
+        let move_a_little = 20;
+
         const options = {
             isStatic: true,
             friction: 1,
@@ -14,8 +16,8 @@ class Strokes extends Particles {
             currentStroke.color = color(getRandomFromList(PALETTE));
             currentStroke.color = distortColor(currentStroke.color);
             currentStroke.image = strokes_full.get(currentStroke.x, currentStroke.y, currentStroke.w, currentStroke.h);
-            currentStroke.x = getRandomFromInterval(0, width);
-            currentStroke.y = getRandomFromInterval(0, height);
+            currentStroke.x = getRandomFromInterval(0 - move_a_little, width);
+            currentStroke.y = getRandomFromInterval(0 - move_a_little, height);
             currentStroke.angle = getRandomFromInterval(-Math.PI / 9, Math.PI / 9);
 
             // plan for impediments, basis of CO2 thing
